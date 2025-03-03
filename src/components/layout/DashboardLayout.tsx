@@ -51,7 +51,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
           setSidebarOpen={setSidebarOpen}
         />
         
-        <main className="flex-1 overflow-auto p-4 md:p-6 transition-all duration-300 animate-in">
+        <main className="flex-1 p-4 md:p-6 transition-all duration-300">
           {children}
         </main>
       </div>

@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Menu, Search, Bell } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 import { UserProfile } from "../ui/UserProfile";
 import { NotificationBell } from "../ui/NotificationBell";
 import { Breadcrumb } from "../ui/BreadcrumbNav";
