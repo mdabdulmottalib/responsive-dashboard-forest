@@ -109,7 +109,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
               {navItems.map((item, index) => (
                 <li key={item.href} className="animate-in" style={{ animationDelay: `${index * 50}ms` }}>
                   {item.submenu ? (
-                    <React.Fragment>
+                    <>
                       <NavLink
                         to={item.href}
                         className={({ isActive }) => cn(
@@ -144,7 +144,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
                           {subItem.title}
                         </NavLink>
                       ))}
-                    </React.Fragment>
+                    </>
                   ) : (
                     <NavLink
                       to={item.href}

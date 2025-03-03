@@ -19,7 +19,7 @@ export const Breadcrumb: React.FC = () => {
     // Add each path segment
     let currentPath = "";
     
-    pathSegments.forEach((segment, index) => {
+    pathSegments.forEach((segment) => {
       currentPath += `/${segment}`;
       
       // Convert kebab-case or snake_case to title case
