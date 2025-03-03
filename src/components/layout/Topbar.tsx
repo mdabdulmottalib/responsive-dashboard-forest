@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Menu, Search, Bell } from "lucide-react";
 import { UserProfile } from "../ui/UserProfile";
 import { NotificationBell } from "../ui/NotificationBell";
-import { Breadcrumb } from "../ui/Breadcrumb"; // Maintaining the same import path but fixing potential casing issues
+import { Breadcrumb } from "../ui/BreadcrumbNav";
 import { cn } from "@/lib/utils";
 
 interface TopbarProps {
