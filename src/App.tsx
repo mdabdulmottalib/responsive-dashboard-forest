@@ -13,20 +13,22 @@ import Season from "./pages/Season";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
-// Create a new query client
+// Create a new query client with more stable configuration
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
-      retry: 1
+      retry: 1,
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      cacheTime: 10 * 60 * 1000, // 10 minutes
     }
   }
 });
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <TooltipProvider>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/houses" element={<AllHouses />} />
@@ -37,10 +39,10 @@ const App = () => (
           <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-      <Toaster />
-      <Sonner />
-    </TooltipProvider>
+        <Toaster />
+        <Sonner />
+      </TooltipProvider>
+    </BrowserRouter>
   </QueryClientProvider>
 );
 

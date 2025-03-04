@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import { 
   Home, 
   Building2, 
-  Plus, 
   MapPin, 
   Star, 
   Cloud, 
@@ -69,7 +68,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
       {/* Mobile overlay */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 z-30 lg:hidden animate-fade-in" 
+          className="fixed inset-0 bg-black/50 z-30 lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -107,9 +106,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
           <nav className="flex-1 overflow-y-auto py-4 px-3">
             <ul className="space-y-1">
               {navItems.map((item, index) => (
-                <li key={item.href} className="animate-in" style={{ animationDelay: `${index * 50}ms` }}>
+                <li key={`nav-${item.href}-${index}`}>
                   {item.submenu ? (
-                    <>
+                    <div>
                       <NavLink
                         to={item.href}
                         className={({ isActive }) => cn(
@@ -129,9 +128,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
                         </span>
                       </NavLink>
                       
-                      {isOpen && item.submenu.map((subItem) => (
+                      {isOpen && item.submenu.map((subItem, subIndex) => (
                         <NavLink
-                          key={subItem.href}
+                          key={`subnav-${subItem.href}-${subIndex}`}
                           to={subItem.href}
                           className={({ isActive }) => cn(
                             "flex items-center px-3 py-2 pl-10 rounded-md transition-colors text-sm",
@@ -144,7 +143,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
                           {subItem.title}
                         </NavLink>
                       ))}
-                    </>
+                    </div>
                   ) : (
                     <NavLink
                       to={item.href}

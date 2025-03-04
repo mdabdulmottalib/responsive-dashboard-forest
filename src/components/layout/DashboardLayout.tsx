@@ -11,7 +11,16 @@ interface DashboardLayoutProps {
 export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [isContentVisible, setIsContentVisible] = useState(false);
   const location = useLocation();
+
+  // Delay showing content to prevent flash
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsContentVisible(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Check if we're on mobile and close sidebar by default
   useEffect(() => {
@@ -42,7 +51,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
   }, [location.pathname, isMobile]);
 
   return (
-    <div className="flex min-h-screen bg-background">
+    <div className="flex min-h-screen bg-background overflow-hidden">
       <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
       
       <div className={`flex flex-col flex-1 transition-all duration-300 ease-in-out ${sidebarOpen ? 'lg:ml-64' : 'ml-0'}`}>
@@ -51,7 +60,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
           setSidebarOpen={setSidebarOpen}
         />
         
-        <main className="flex-1 p-4 md:p-6 transition-all duration-300">
+        <main className={`flex-1 p-4 md:p-6 transition-opacity duration-300 ${isContentVisible ? 'opacity-100' : 'opacity-0'}`}>
           {children}
         </main>
       </div>

@@ -1,13 +1,24 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Building2, DollarSign, MapPin, Users } from "lucide-react";
 
 const Dashboard = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Ensure content is loaded and stable before displaying
+    setIsLoaded(true);
+  }, []);
+
+  if (!isLoaded) {
+    return <div className="min-h-screen bg-background"></div>;
+  }
+
   return (
     <DashboardLayout>
-      <div className="space-y-6 animate-in">
+      <div className="space-y-6">
         <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
         
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
