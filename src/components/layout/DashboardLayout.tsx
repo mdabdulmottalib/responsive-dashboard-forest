@@ -11,15 +11,10 @@ interface DashboardLayoutProps {
 export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-  const [isContentVisible, setIsContentVisible] = useState(false);
   const location = useLocation();
 
-  // Delay showing content to prevent flash - but not too long to avoid blank screens
+  // Check if we're on mobile and close sidebar by default
   useEffect(() => {
-    // Start by showing content
-    setIsContentVisible(true);
-    
-    // Check if we're on mobile and close sidebar by default
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 1024);
       setSidebarOpen(window.innerWidth >= 1024);

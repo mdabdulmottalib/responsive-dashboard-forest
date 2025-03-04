@@ -7,7 +7,7 @@ import { Cloud } from "lucide-react";
 const Season = () => {
   return (
     <DashboardLayout>
-      <div className="space-y-6 animate-in">
+      <div className="space-y-6">
         <h1 className="text-3xl font-bold tracking-tight">Seasons</h1>
         
         <Card className="shadow-sm">

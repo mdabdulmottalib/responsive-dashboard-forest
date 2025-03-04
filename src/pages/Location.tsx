@@ -7,7 +7,7 @@ import { MapPin } from "lucide-react";
 const Location = () => {
   return (
     <DashboardLayout>
-      <div className="space-y-6 animate-in">
+      <div className="space-y-6">
         <h1 className="text-3xl font-bold tracking-tight">Locations</h1>
         
         <Card className="shadow-sm">
