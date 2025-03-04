@@ -29,7 +29,7 @@ export const UserProfile: React.FC = () => {
   };
   
   return (
-    <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
+    <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button className="flex items-center gap-2 outline-none hover:bg-muted/80 p-1.5 pr-3 rounded-full transition-colors">
           <Avatar className="h-8 w-8 border border-border">

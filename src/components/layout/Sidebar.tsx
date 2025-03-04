@@ -76,13 +76,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
       {/* Sidebar */}
       <aside 
         className={cn(
-          "fixed left-0 top-0 bottom-0 z-40 h-full w-64 bg-sidebar text-sidebar-foreground transition-transform duration-300 ease-in-out",
+          "fixed left-0 top-0 bottom-0 z-40 h-full w-64 bg-background border-r border-border transition-transform duration-300 ease-in-out",
           isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0 lg:w-20"
         )}
       >
         <div className="flex h-full flex-col">
           {/* Sidebar header */}
-          <div className="flex items-center justify-between h-16 px-4 border-b border-sidebar-border">
+          <div className="flex items-center justify-between h-16 px-4 border-b border-border">
             <h1 className={cn(
               "text-xl font-bold tracking-tight transition-opacity duration-300",
               isOpen ? "opacity-100" : "opacity-0 lg:hidden"
@@ -92,7 +92,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
             
             <button 
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md hover:bg-sidebar-accent lg:flex hidden items-center justify-center"
+              className="p-2 rounded-md hover:bg-muted lg:flex hidden items-center justify-center"
               aria-label={isOpen ? "Collapse sidebar" : "Expand sidebar"}
             >
               {isOpen ? 
@@ -114,8 +114,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
                         className={({ isActive }) => cn(
                           "flex items-center px-3 py-2 rounded-md transition-colors",
                           isActive 
-                            ? "bg-sidebar-accent text-sidebar-accent-foreground" 
-                            : "hover:bg-sidebar-accent/50 text-sidebar-foreground/80 hover:text-sidebar-foreground"
+                            ? "bg-accent text-accent-foreground" 
+                            : "hover:bg-accent/50 text-foreground/80 hover:text-foreground"
                         )}
                         end
                       >
@@ -135,8 +135,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
                           className={({ isActive }) => cn(
                             "flex items-center px-3 py-2 pl-10 rounded-md transition-colors text-sm",
                             isActive 
-                              ? "bg-sidebar-accent/70 text-sidebar-accent-foreground" 
-                              : "hover:bg-sidebar-accent/30 text-sidebar-foreground/70 hover:text-sidebar-foreground"
+                              ? "bg-accent/70 text-accent-foreground" 
+                              : "hover:bg-accent/30 text-foreground/70 hover:text-foreground"
                           )}
                           end
                         >
@@ -150,8 +150,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
                       className={({ isActive }) => cn(
                         "flex items-center px-3 py-2 rounded-md transition-colors",
                         isActive 
-                          ? "bg-sidebar-accent text-sidebar-accent-foreground" 
-                          : "hover:bg-sidebar-accent/50 text-sidebar-foreground/80 hover:text-sidebar-foreground",
+                          ? "bg-accent text-accent-foreground" 
+                          : "hover:bg-accent/50 text-foreground/80 hover:text-foreground",
                         !isOpen && "lg:justify-center"
                       )}
                       end
@@ -172,7 +172,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen }) => {
           
           {/* Version info */}
           <div className={cn(
-            "p-4 text-xs text-sidebar-foreground/60 border-t border-sidebar-border",
+            "p-4 text-xs text-foreground/60 border-t border-border",
             !isOpen && "lg:flex lg:items-center lg:justify-center"
           )}>
             {isOpen ? "Dashboard v1.0" : <span className="lg:block hidden">v1.0</span>}

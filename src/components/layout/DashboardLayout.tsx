@@ -14,17 +14,12 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
   const [isContentVisible, setIsContentVisible] = useState(false);
   const location = useLocation();
 
-  // Delay showing content to prevent flash
+  // Delay showing content to prevent flash - but not too long to avoid blank screens
   useEffect(() => {
-    setIsContentVisible(false);
-    const timer = setTimeout(() => {
-      setIsContentVisible(true);
-    }, 200);
-    return () => clearTimeout(timer);
-  }, [location.pathname]);
-
-  // Check if we're on mobile and close sidebar by default
-  useEffect(() => {
+    // Start by showing content
+    setIsContentVisible(true);
+    
+    // Check if we're on mobile and close sidebar by default
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 1024);
       setSidebarOpen(window.innerWidth >= 1024);
@@ -57,7 +52,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
           setSidebarOpen={setSidebarOpen}
         />
         
-        <main className={`flex-1 p-4 md:p-6 transition-opacity duration-300 ${isContentVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <main className="flex-1 p-4 md:p-6">
           {children}
         </main>
       </div>
