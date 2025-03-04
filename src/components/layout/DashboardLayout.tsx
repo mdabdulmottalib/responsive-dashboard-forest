@@ -16,21 +16,18 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) =>
 
   // Delay showing content to prevent flash
   useEffect(() => {
+    setIsContentVisible(false);
     const timer = setTimeout(() => {
       setIsContentVisible(true);
-    }, 100);
+    }, 200);
     return () => clearTimeout(timer);
-  }, []);
+  }, [location.pathname]);
 
   // Check if we're on mobile and close sidebar by default
   useEffect(() => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 1024);
-      if (window.innerWidth < 1024) {
-        setSidebarOpen(false);
-      } else {
-        setSidebarOpen(true);
-      }
+      setSidebarOpen(window.innerWidth >= 1024);
     };
 
     // Initial check
